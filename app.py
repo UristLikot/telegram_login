@@ -26,7 +26,7 @@ def string_generator(data_incoming):
 
 @app.route('/login')
 def login():
-    print(app.config['459744558:AAEWYIqK8c-VTomDzIm_4Vre0f-bCJL0JXs'])
+    print(app.config['BOT_API'])
     tg_data = {
         "id": request.args.get('id', None),
         "first_name": request.args.get('first_name', None),
@@ -37,7 +37,7 @@ def login():
         "hash": request.args.get('hash', None)
     }
     data_check_string = string_generator(tg_data)
-    secret_key = hashlib.sha256(app.config['459744558:AAEWYIqK8c-VTomDzIm_4Vre0f-bCJL0JXs'].encode('utf-8')).digest()
+    secret_key = hashlib.sha256(app.config['BOT_API'].encode('utf-8')).digest()
     secret_key_bytes = secret_key
     data_check_string_bytes = bytes(data_check_string, 'utf-8')
     hmac_string = hmac.new(secret_key_bytes, data_check_string_bytes, hashlib.sha256).hexdigest()
