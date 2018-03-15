@@ -1,11 +1,10 @@
 import hashlib
 import hmac
 import requests
-import bott
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-bot_api="BOT_API"
+bot_api="BOT_TOKEN"
 
 
 @app.route('/')
@@ -38,8 +37,6 @@ def login():
     secret_key = hashlib.sha256(bot_api.encode('utf-8')).digest()
     secret_key_bytes = secret_key
     hmac_string = hmac.new(secret_key_bytes, data_check_string_bytes, hashlib.sha256).hexdigest()
-    global usr_id=str(tg_data['id'])
-    bott.textMessage(bott.bot,usr_id)
     if hmac_string==tg_data['hash']:
         return render_template('testlogin.html')
     else:
