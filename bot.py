@@ -1,6 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 import app
-updater = Updater(token='459744558:AAEWYIqK8c-VTomDzIm_4Vre0f-bCJL0JXs')
+updater = Updater(token='BOT_API')
 dispatcher = updater.dispatcher
 def textMessage(bot, update):
     bot.send_message(chat_id)
